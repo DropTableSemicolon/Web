@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AAAAAAAAAAAAAA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .post-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      text-align: center;
+    }
+    .post-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      height: auto;
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .post-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .post-title {
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .post-content {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: gray;
+    }
+    .create-post {
+      margin-bottom: 30px;
+      padding: 10px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      margin: 0 auto 30px;
+    }
+    .create-post input, .create-post textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .create-post button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>AAAAAAAAAAAAAA</h1>
+  
+  <div class="create-post">
+    <h2>Create Post</h2>
+    <p id="timer"></p>
+    <textarea id="post-content" placeholder="Post content" required></textarea>
+    <button onclick="createPost()">Create Post</button>
+  </div>
+
+  <div class="feed" id="feed"></div>
+
+  <script>
+
+    function checkSessionCookie() {
+      const cookies = document.cookie.split(';');
+
+      const sessionCookie = cookies.find(cookie => cookie.trim().startsWith('session='));
+      if (!sessionCookie) {
+        window.location.href = '/login.html';
+      }
+
+      const sessionCookieValue = sessionCookie.split('=')[1];
+      if (!sessionCookieValue) {
+        window.location.href = '/login.html';
+      }
+    }
+
+    const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
+    const CREATE_POST_URL = 'https://social.helia.gg/api/v1/feed/post';
+
+    async function loadPosts() {
+      try {
+        const response = await fetch(API_URL, {
+          method: 'GET'
+        });
+
+        if (!response.ok) {
+          throw response;
+        }
+
+        const posts = await response.json();
+        displayPosts(posts.posts);
+      } catch (error) {
+
+        if (error.status === 401) {
+          document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          window.location.href = '/login.html';
+        }
+
+        console.error('Error loading posts:', error);
+      }
+    }
+
+    function displayPosts(posts) {
+      const feed = document.getElementById('feed');
+      feed.innerHTML = '';
+
+      posts.forEach(post => {
+        const postCard = document.createElement('div');
+        postCard.classList.add('post-card');
+        
+        postCard.innerHTML = `
+          <div class="post-header">
+            <img src="${post.profile_picture}" alt="${post.username}" />
+            <div>
+              <strong>${post.display_name}</strong> <br/>
+              @${post.username}
+            </div>
+          </div>
+          <div class="post-content">${post.content}</div>
+          <div class="post-footer">
+            <span>Likes: ${post.like_count}</span>
+            <span>${new Date(post.created_at).toLocaleString()}</span>
+          </div>
+        `;
+
+        feed.appendChild(postCard);
+      });
+    }
+
+    async function createPost() {
+      const content = document.getElementById('post-content').value;
+
+      if (!content) {
+        alert('Please enter some content');
+        return;
+      }
+
+      try {
+        const response = await fetch(CREATE_POST_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            content
+          })
+        });
+
+        if (response.ok) {
+          alert('Post created successfully');
+          loadPosts();
+        } else {
+          const errorData = await response.json();
+          alert('Error creating post: ' + errorData.message);
+        }
+      } catch (error) {
+        console.error('Error creating post:', error);
+      }
+    }
+
+    const startDate = new Date('2001-09-11T14:14:00+02:00'); 
+
+    function updateTimer() {
+      const currentDate = new Date();
+      const diffInSeconds = Math.floor((currentDate - startDate) / 1000);
+      document.getElementById('timer').innerText = `${diffInSeconds} seconds since 9/11`;
+    }
+
+    window.onload = function() {
+      checkSessionCookie();
+      loadPosts();
+      setInterval(updateTimer, 1000);
+      updateTimer();
+    }
+  </script>
+</body>
+</html>
