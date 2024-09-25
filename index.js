@@ -1,3 +1,7 @@
+function setSessionCookie(value) {
+  document.cookie = `session=${value}; path=/;`;
+}
+
 function checkSessionCookie() {
     const cookies = document.cookie.split(';');
 
@@ -111,6 +115,7 @@ function checkSessionCookie() {
   }
 
   window.onload = function() {
+    //setSessionCookie('value');
     checkSessionCookie();
     loadPosts();
     setInterval(updateTimer, 1000);
