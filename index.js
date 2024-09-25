@@ -1,8 +1,16 @@
+var devMode = false;
+
 function setSessionCookie(value) {
+  devMode = true;
   document.cookie = `session=${value}; path=/;`;
 }
 
 function checkSessionCookie() {
+
+    if (devMode) {
+      return;
+    }
+
     const cookies = document.cookie.split(';');
 
     const sessionCookie = cookies.find(cookie => cookie.trim().startsWith('session='));
@@ -39,7 +47,7 @@ function checkSessionCookie() {
       displayPosts(posts.posts);
     } catch (error) {
 
-      if (error.status === 401) {
+      if (error.status === 401 && !devMode) {
         document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         window.location.href = 'https://social.helia.gg/login/';
       }
@@ -115,7 +123,7 @@ function checkSessionCookie() {
   }
 
   window.onload = function() {
-    //setSessionCookie('value');
+    //setSessionCookie('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjczNDQzNjAsImhwIjoiJDJhJDE0JGxOa3pMUjhHMDNndFRaWnFyRW1sME9hazlxWTBiUG1mcXhCOFp5SUZnLmpadzd0ek9DN2FpIiwidXVpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCJ9.-wjt-a81pheeaG0zxujBXIm4gX5I3LYD1n-Lielpztk');
     checkSessionCookie();
     loadPosts();
     setInterval(updateTimer, 1000);
