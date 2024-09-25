@@ -6,10 +6,16 @@ function checkSessionCookie() {
       window.location.href = 'https://social.helia.gg/login/';
     }
 
-    const sessionCookieValue = sessionCookie.split('=')[1];
+    let sessionCookieValue = sessionCookie.split('=')[1];
+    sessionCookieValue = sessionCookieValue.split('; expires')[0];
     if (!sessionCookieValue) {
       window.location.href = 'https://social.helia.gg/login/';
     }
+  }
+
+  function logout() {
+    document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href = 'https://social.helia.gg/login/';
   }
 
   const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
