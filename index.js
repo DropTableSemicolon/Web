@@ -1,70 +1,59 @@
 var devMode = false;
 
-function setSessionCookie(value) {
-  devMode = true;
-  document.cookie = `session=${value}; path=/;`;
-}
-
-function checkSessionCookie() {
-
-    if (devMode) {
-      return;
-    }
-
-    const cookies = document.cookie.split(';');
-
-    const sessionCookie = cookies.find(cookie => cookie.trim().startsWith('session='));
-    if (!sessionCookie) {
-      window.location.href = 'https://social.helia.gg/login/';
-    }
-
-    let sessionCookieValue = sessionCookie.split('=')[1];
-    sessionCookieValue = sessionCookieValue.split('; expires')[0];
-    if (!sessionCookieValue) {
-      window.location.href = 'https://social.helia.gg/login/';
-    }
-  }
-
-  function logout() {
+function logout() {
     document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     window.location.href = 'https://social.helia.gg/login/';
-  }
+}
 
-  const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
-  const CREATE_POST_URL = 'https://social.helia.gg/api/v1/feed/post';
+const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
+const DEV_API_URL = 'https://social.helia.gg/api/dev/feed/posts';
+const CREATE_POST_URL = 'https://social.helia.gg/api/v1/feed/post';
 
-  async function loadPosts() {
+async function loadPosts() {
     try {
-      const response = await fetch(API_URL, {
-        method: 'GET'
-      });
 
-      if (!response.ok) {
-        throw response;
+      let response;
+
+      if (devMode) {
+
+        response = await fetch(API_URL, {
+          method: 'GET'
+        });
+
+      } else {
+
+        response = await fetch(API_URL, {
+          method: 'GET'
+        });
+
       }
 
-      const posts = await response.json();
-      displayPosts(posts.posts);
+        if (!response.ok) {
+            throw response;
+        }
+
+        const posts = await response.json();
+        displayPosts(posts.posts);
     } catch (error) {
 
-      if (error.status === 401 && !devMode) {
-        document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        window.location.href = 'https://social.helia.gg/login/';
-      }
+        if (error.status === 401 && !devMode) {
+            document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            window.location.href = 'https://social.helia.gg/login/';
+        }
 
-      console.error('Error loading posts:', error);
+        console.error('Error loading posts:', error);
     }
-  }
+}
 
-  function displayPosts(posts) {
+function displayPosts(posts) {
     const feed = document.getElementById('feed');
     feed.innerHTML = '';
 
     posts.forEach(post => {
-      const postCard = document.createElement('div');
-      postCard.classList.add('post-card');
-      
-      postCard.innerHTML = `
+        const postCard = document.createElement('div');
+        postCard.classList.add('post-card');
+
+        postCard.innerHTML = `
         <div class="post-header">
           <img src="${post.profile_picture}" alt="${post.username}" />
           <div>
@@ -79,53 +68,58 @@ function checkSessionCookie() {
         </div>
       `;
 
-      feed.appendChild(postCard);
+        feed.appendChild(postCard);
     });
-  }
+}
 
-  async function createPost() {
+async function createPost() {
     const content = document.getElementById('post-content').value;
 
     if (!content) {
-      alert('Please enter some content');
-      return;
+        alert('Please enter some content');
+        return;
+    }
+
+    if (devMode) {
+        alert('Cannot create post in dev mode');
+        return;
     }
 
     try {
-      const response = await fetch(CREATE_POST_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          content
-        })
-      });
+        const response = await fetch(CREATE_POST_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                content
+            })
+        });
 
-      if (response.ok) {
-        alert('Post created successfully');
-        loadPosts();
-      } else {
-        const errorData = await response.json();
-        alert('Error creating post: ' + errorData.message);
-      }
+        if (response.ok) {
+            alert('Post created successfully');
+            loadPosts();
+        } else {
+            const errorData = await response.json();
+            alert('Error creating post: ' + errorData.message);
+        }
     } catch (error) {
-      console.error('Error creating post:', error);
+        console.error('Error creating post:', error);
     }
-  }
+}
 
-  const startDate = new Date('2001-09-11T14:14:00+02:00'); 
+const startDate = new Date('2001-09-11T14:14:00+02:00');
 
-  function updateTimer() {
+function updateTimer() {
     const currentDate = new Date();
     const diffInSeconds = Math.floor((currentDate - startDate) / 1000);
     document.getElementById('timer').innerText = `${diffInSeconds} seconds since 9/11`;
-  }
+}
 
-  window.onload = function() {
-    //setSessionCookie('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjczNDQzNjAsImhwIjoiJDJhJDE0JGxOa3pMUjhHMDNndFRaWnFyRW1sME9hazlxWTBiUG1mcXhCOFp5SUZnLmpadzd0ek9DN2FpIiwidXVpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCJ9.-wjt-a81pheeaG0zxujBXIm4gX5I3LYD1n-Lielpztk');
+window.onload = function() {
+    //devMode = true;
     checkSessionCookie();
     loadPosts();
     setInterval(updateTimer, 1000);
     updateTimer();
-  }
+}
