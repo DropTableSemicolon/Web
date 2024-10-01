@@ -16,11 +16,11 @@ body {
     gap: 20px;
   }
   .post-card {
-    background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding: 15px;
     text-align: center;
+    background: linear-gradient(225deg, rgba(224,251,252,1) 22%, rgba(157,180,192,1) 100%);
   }
   .post-card img {
     max-width: 100%;
@@ -51,7 +51,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: gray;
+    color: black;
   }
   .create-post {
     margin-bottom: 30px;
@@ -61,6 +61,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     margin: 0 auto 30px;
+    background: linear-gradient(225deg, rgba(224,251,252,1) 22%, rgba(157,180,192,1) 100%);
   }
   .create-post input, .create-post textarea {
     width: 100%;
@@ -68,6 +69,7 @@ body {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    
   }
   .create-post button {
     padding: 10px 15px;
