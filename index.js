@@ -9,6 +9,26 @@ const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
 const DEV_API_URL = 'https://social.helia.gg/api/dev/feed/posts';
 const CREATE_POST_URL = 'https://social.helia.gg/api/v1/feed/post';
 
+function checkSessionCookie() {
+
+  if (devMode) {
+    return;
+  }
+
+  const cookies = document.cookie.split(';');
+
+  const sessionCookie = cookies.find(cookie => cookie.trim().startsWith('session='));
+  if (!sessionCookie) {
+    window.location.href = 'https://social.helia.gg/login/';
+  }
+
+  let sessionCookieValue = sessionCookie.split('=')[1];
+  sessionCookieValue = sessionCookieValue.split('; expires')[0];
+  if (!sessionCookieValue) {
+    window.location.href = 'https://social.helia.gg/login/';
+  }
+}
+
 async function loadPosts() {
     try {
 
