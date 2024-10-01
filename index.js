@@ -36,7 +36,7 @@ async function loadPosts() {
 
       if (devMode) {
 
-        response = await fetch(API_URL, {
+        response = await fetch(DEV_API_URL, {
           method: 'GET'
         });
 
