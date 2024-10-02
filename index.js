@@ -8,6 +8,8 @@ function logout() {
 const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
 const DEV_API_URL = 'https://social.helia.gg/api/dev/feed/posts';
 const CREATE_POST_URL = 'https://social.helia.gg/api/v1/feed/post';
+const LIKE_URL = 'https://social.helia.gg/api/v1/feed/like'
+const UNLIKE_URL = 'https://socail.helia.gg/api/v1/feed/unlike'
 
 function checkSessionCookie() {
 
@@ -90,6 +92,58 @@ function displayPosts(posts) {
 
         feed.appendChild(postCard);
     });
+}
+
+async function Likefuggveny(tipus, uuid)
+{
+  if (tipus=="like")
+    {
+      try {
+        const response = await fetch(LIKE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "post_uuid":uuid
+            })
+        });
+
+        if (response.ok) {
+            alert('Post liked');
+            loadPosts();
+        } else {
+            const errorData = await response.json();
+            alert('Error liking: ' + errorData.message);
+        }
+    } catch (error) {
+        console.error('Error liking:', error);
+    }
+    }
+  if(tipus=="unlike")
+    {
+      try {
+        const response = await fetch(UNLIKE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "post_uuid":uuid
+            })
+        });
+
+        if (response.ok) {
+            alert('Post unliked');
+            loadPosts();
+        } else {
+            const errorData = await response.json();
+            alert('Error unliking: ' + errorData.message);
+        }
+    } catch (error) {
+        console.error('Error unliking:', error);
+    }
+    }
 }
 
 async function createPost() {
