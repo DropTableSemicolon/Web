@@ -9,7 +9,7 @@ const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
 const DEV_API_URL = 'https://social.helia.gg/api/dev/feed/posts';
 const CREATE_POST_URL = 'https://social.helia.gg/api/v1/feed/post';
 const LIKE_URL = 'https://social.helia.gg/api/v1/feed/like'
-const UNLIKE_URL = 'https://socail.helia.gg/api/v1/feed/unlike'
+const UNLIKE_URL = 'https://social.helia.gg/api/v1/feed/unlike'
 
 function checkSessionCookie() {
 
