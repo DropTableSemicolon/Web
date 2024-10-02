@@ -74,6 +74,11 @@ function displayPosts(posts) {
     posts.forEach(post => {
         const postCard = document.createElement('div');
         postCard.classList.add('post-card');
+        
+        let tipus = "like";
+        if (post.liked_by_user == true){
+          tipus = "unlike"
+        }
 
         postCard.innerHTML = `
         <div class="post-header">
@@ -85,10 +90,15 @@ function displayPosts(posts) {
         </div>
         <div class="post-content">${post.content}</div>
         <div class="post-footer">
-          <span>Likes: ${post.like_count}</span>
+          <span class="like-button" data-tipus="${tipus}" data-uuid="${post.uuid}">Likes: ${post.like_count}</span>
           <span>${new Date(post.created_at).toLocaleString()}</span>
         </div>
-      `;
+            `;
+
+        const likeButton = postCard.querySelector('.like-button');
+        likeButton.addEventListener('click', function() {
+          Likefuggveny(this.getAttribute('data-tipus'), this.getAttribute('data-uuid'));
+        });
 
         feed.appendChild(postCard);
     });
