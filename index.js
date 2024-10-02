@@ -90,10 +90,15 @@ function displayPosts(posts) {
         </div>
         <div class="post-content">${post.content}</div>
         <div class="post-footer">
-          <span onclick="Likefuggveny(${tipus}, ${post.uuid})">Likes: ${post.like_count}</span>
+          <span class="like-button" data-tipus="${tipus}" data-uuid="${post.uuid}">Likes: ${post.like_count}</span>
           <span>${new Date(post.created_at).toLocaleString()}</span>
         </div>
-      `;
+            `;
+
+        const likeButton = postCard.querySelector('.like-button');
+        likeButton.addEventListener('click', function() {
+          Likefuggveny(this.getAttribute('data-tipus'), this.getAttribute('data-uuid'));
+        });
 
         feed.appendChild(postCard);
     });
