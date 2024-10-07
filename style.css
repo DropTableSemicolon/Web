@@ -1,14 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
-    background: linear-gradient(135deg, #FFD6FF, #B8C0FF );
     height: 100vh;
+    background-image:url(https://wallpapers.com/images/hd/1920x1080-aesthetic-glrfk0ntspz3tvxg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   h1 {
     text-align: center;
+    font-size: 36px;
     margin-bottom: 20px;
+    color:#1899D6;
+    font-weight: bold;
   }
   .feed {
     display: flex;
