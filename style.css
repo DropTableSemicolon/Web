@@ -30,19 +30,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
   }
   .item {
     height: 40px;
     margin-bottom: 10px;
-    
   }
 
   .post-card img {
     max-width: 100%;
     border-radius: 8px;
     height: auto;
-    
   }
   .post-header {
     display: flex;
@@ -62,7 +59,8 @@ body {
   }
   .post-content {
     margin: 10px 0;
-    font-size: 16px;
+    font-size: 24px;
+    text-align: left;
   }
   .post-footer {
     display: flex;
