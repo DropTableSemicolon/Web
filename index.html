@@ -14,50 +14,53 @@
   
   <div class="feed container item" id="feed"></div>
 
+  <div>
+    
+    <nav class="navbar sticky-top">
+      <form class="container-fluid justify-content-start">
+        <button class="button-19" type="button">Home</button>
+        
+      </form>
+    </nav>
+    <nav>
+    <nav class="navbar">
+      <form class="container-fluid justify-content-start">
+        <button class="button-19" type="button">Messages</button>
+        
+      </form>
+    </nav>
+    <nav class="navbar">
+      <form class="container-fluid justify-content-start">
+        <button class="button-19" type="button">Search</button>
+        
+      </form>
+    </nav>
+    <div class="create-post">
+      <h2>Create Post</h2>
+      <p id="timer"></p>
+      <textarea id="post-content" placeholder="Post content" required></textarea>
+      <button onclick="createPost()">Create Post</button>
+    </div>
+    </nav>
+    <nav class="navbar fixed-bottom">
+      <form class="container-fluid justify-content-start">
+        <button class="button-24" type="button" onclick="logout()">Logout</button>
+        
+      </form>
+    </nav>
+  </div>
+
+
+
   <!--Csúszka-->
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></button>
+<!--  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></button>
 
 <div class="offcanvas offcanvas-start slideshow" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Socialo</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="create-post">
-    <h2>Create Post</h2>
-    <p id="timer"></p>
-    <textarea id="post-content" placeholder="Post content" required></textarea>
-    <button onclick="createPost()">Create Post</button>
-  </div>
-  <!--A navbár-->
-  <div class="offcanvas-body">
-    <div>
-      <nav class="navbar sticky-top">
-        <form class="container-fluid justify-content-start">
-          <button class="button-19" type="button">Home</button>
-          
-        </form>
-      </nav>
-      <nav class="navbar">
-        <form class="container-fluid justify-content-start">
-          <button class="button-19" type="button">Messages</button>
-          
-        </form>
-      </nav>
-      <nav class="navbar">
-        <form class="container-fluid justify-content-start">
-          <button class="button-19" type="button">Search</button>
-          
-        </form>
-      </nav>
-      <nav class="navbar fixed-bottom">
-        <form class="container-fluid justify-content-start">
-          <button class="button-24" type="button" onclick="logout()">Logout</button>
-          
-        </form>
-      </nav>
-    </div>
-  </div>
-</div>
+ --> 
 
   <script src="index.js"></script>
 </body>

@@ -81,6 +81,7 @@ body {
     max-width: 400px;
     margin: 0 auto 30px;
     background: linear-gradient(225deg, rgba(224,251,252,1) 22%, rgba(157,180,192,1) 100%);
+    float: left;
   }
   .create-post input, .create-post textarea {
     width: 100%;
@@ -150,7 +151,7 @@ body {
     -webkit-user-select: none;
     vertical-align: middle;
     white-space: nowrap;
-    width: 100%;
+    width: 17%;
   }
   
   .button-19:after {
@@ -226,3 +227,20 @@ body {
   .slideshow{
     background: linear-gradient(135deg, #FFD6FF, #B8C0FF );
   }
+
+  .btn.btn-primary {
+    position: fixed; /* Vagy absolute, attól függően, hogy mit szeretnél */
+    left: 0;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+}
+
+  .offcanvas {
+  width: 250px; /* Állítsd be a kívánt szélességet */
+}
+
+nav{
+  align-items: left;
+}
