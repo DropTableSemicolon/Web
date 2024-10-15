@@ -230,7 +230,7 @@ body {
   }
 
   .btn.btn-primary {
-    position: fixed; /* Vagy absolute, attól függően, hogy mit szeretnél */
+    position: fixed;
     left: 0;
     top: 20px;
     width: 50px;
@@ -239,7 +239,7 @@ body {
 }
 
   .offcanvas {
-  width: 250px; /* Állítsd be a kívánt szélességet */
+  width: 250px;
 }
 
 nav{
