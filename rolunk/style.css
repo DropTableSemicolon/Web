@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    background-image: url(https://wallpapers.com/images/hd/1920x1080-aesthetic-glrfk0ntspz3tvxg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #1899D6;
+    font-weight: bold;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    text-align: left;
+    background: linear-gradient(225deg, rgba(224, 251, 252, 1) 22%, rgba(157, 180, 192, 1) 100%);
+    display: flex;
+    gap: 10px;
+}
+
+.post-card img {
+    width: 30vh;
+    height: auto;
+    border-radius: 8px;
+}
+
+.post-content {
+    font-size: 20px;
+    text-align: justify;
+}
+
+p {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
