@@ -5,44 +5,55 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image:url(https://wallpapers.com/images/hd/1920x1080-aesthetic-glrfk0ntspz3tvxg.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 .form-container {
-    background-color: #fff;
+    background-color: #B8C0FF;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
 }
-h2 {
+h1 {
     text-align: center;
     color: #333;
+    font-family: cursive;
 }
 label {
     font-weight: bold;
     margin-top: 10px;
     display: block;
-    color: #555;
+    color: #333;
+    font-family: cursive;
+    font-size: 2vh;
 }
 input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 5px 0 15px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #B8C0FF;
     border-radius: 4px;
     box-sizing: border-box;
+    background: #FFD6FF;
+    font-family: cursive;
 }
 input[type="submit"] {
-    background-color: #28a745;
+    background-color: #3a0ca3;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    font-family: cursive;
+    font-size: 2vh;
 }
 input[type="submit"]:hover {
-    background-color: #218838;
+    background-color: #4361ee;
 }
 .alert {
     padding: 10px;
@@ -51,10 +62,10 @@ input[type="submit"]:hover {
     display: none;
 }
 .alert-success {
-    background-color: #d4edda;
+    background-color: #B8C0FF;
     color: #155724;
 }
 .alert-error {
-    background-color: #f8d7da;
+    background-color: #B8C0FF;
     color: #721c24;
 }
