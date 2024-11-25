@@ -74,17 +74,19 @@ h1 {
   color: black;
 }
 .create-post {
-  position: fixed; /* Rögzítjük a jobb oldalon */
-  top: 20px; /* Egy kis távolság a felső szélétől */
-  right: 20px; /* Egy kis távolság a jobb oldali szélétől */
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   background: linear-gradient(225deg, rgba(224,251,252,1) 22%, rgba(157,180,192,1) 100%);
-  z-index: 10; /* Biztosítjuk, hogy a tartalom fölött legyen */
+  z-index: 10;
 }
+
 
 .create-post input, .create-post textarea {
   width: 100%;
@@ -284,52 +286,45 @@ background-color: #555;
 color: white;
 }
 
-
-/* Bal oldali fix navbar */
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 250px; /* A navbar szélessége */
-  background-color: #2c3e50; /* Sötét háttér (pl. sötétkék vagy grafitszürke) */
+  width: 250px;
+  background-color: #2c3e50;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  padding: 10px 0; /* A navbar belső margója, hogy ne érjenek közvetlenül a gombok a széléhez */
+  padding: 10px 0;
 }
 
-/* Linkek, azaz gombok */
 li a {
   display: block;
-  color: white; /* Fehér betűszín */
-  padding: 15px 30px; /* A gombok szélesítése */
+  color: white;
+  padding: 15px 30px;
   text-decoration: none;
   text-align: center;
   font-size: 18px;
-  background-color: #007bff; /* Kék gombok */
-  border-radius: 4px; /* Gombok sarkainak lekerekítése */
-  margin: 5px 20px; /* Kisebb margó a gombok között, hogy ne érjenek a navbar széléhez */
-  transition: background-color 0.3s, color 0.3s; /* Áttűnés a hover-hatásnál */
+  background-color: #007bff;
+  border-radius: 4px;
+  margin: 5px 20px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Aktív link (gomb) stílusa */
 li a.active {
-  background-color: #004b8d; /* Sötétebb kék aktív állapot */
+  background-color: #004b8d;
 }
 
-/* Hover állapot: gombok háttérszíne világosabb kékre változik, és a szöveg fehér marad */
 li a:hover {
-  background-color: #0056b3; /* Világosabb kék hover állapotban */
-  color: white; /* Fehér szöveg hover hatásra */
+  background-color: #0056b3;
+  color: white;
 }
 
-/* Listaelemek elválasztása */
 li {
-  border-bottom: 1px solid #34495e; /* Sötétebb elválasztó szín */
+  border-bottom: 1px solid #34495e;
 }
 
-/* Az utolsó listaelem */
 li:last-child {
   border-bottom: none;
 }

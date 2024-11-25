@@ -201,7 +201,7 @@ function updateTimer() {
 }
 
 window.onload = function() {
-    //devMode = true;
+    devMode = true;
     checkSessionCookie();
     loadPosts();
     setInterval(updateTimer, 1000);
