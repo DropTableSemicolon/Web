@@ -14,52 +14,27 @@
   
   <div class="feed container item" id="feed"></div>
 
-  <div>
-    
-    <nav class="navbar sticky-top">
-      <form class="container-fluid justify-content-start">
-        <button class="button-19" type="button">Home</button>
-      </form>
-    </nav>
-    <nav>
-    <nav class="navbar">
-      <form class="container-fluid justify-content-start">
-        <a class="button-19" href="uzenetek/uzenetek.html" type="button">Üzenetek</a>
-      </form>
-    </nav>
-    <nav class="navbar">
-      <form class="container-fluid justify-content-start">
-        <a class="button-19" href="kereso/kereso.html" type="button">Kereső</a>
-      </form>
-    </nav>
-    <nav>
-      <form class="container-fluid justify-content-start">
-        <a class="button-19" href="rolunk/rolunk.html">Rólunk</a>
-    </nav>
-    <div class="create-post">
-      <h2>Create Post</h2>
-      <p id="timer"></p>
-      <textarea id="post-content" placeholder="Post content" required></textarea>
-      <button onclick="createPost()">Create Post</button>
-    </div>
-    </nav>
-    <nav class="navbar fixed-bottom">
-      <form class="container-fluid justify-content-start">
-        <button class="button-24" type="button" onclick="logout()">Logout</button>
-      </form>
-    </nav>
+  <!-- Vertical Navbar -->
+  <ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="uzenetek/uzenetek.html">Üzenetek</a></li>  
+    <li><a href="kereso/kereso.html">Kereső</a></li>
+    <li><a href="rolunk/rolunk.html">Rólunk</a></li>
+  </ul>
+
+  <div class="create-post">
+    <h2>Create Post</h2>
+    <p id="timer"></p>
+    <textarea id="post-content" placeholder="Post content" required></textarea>
+    <button onclick="createPost()">Create Post</button>
   </div>
 
-  <!--Csúszka-->
-<!--  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></button>
-
-<div class="offcanvas offcanvas-start slideshow" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Socialo</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
- --> 
-
+  <!-- Fixed Logout Button at the Bottom -->
+  <nav class="navbar fixed-bottom">
+    <form class="container-fluid justify-content-start">
+      <button class="button-24" type="button" onclick="logout()">Logout</button>
+    </form>
+  </nav>
 
   <script src="index.js"></script>
 </body>
