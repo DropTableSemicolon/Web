@@ -86,8 +86,6 @@ h1 {
   background: linear-gradient(225deg, rgba(224,251,252,1) 22%, rgba(157,180,192,1) 100%);
   z-index: 10;
 }
-
-
 .create-post input, .create-post textarea {
   width: 100%;
   padding: 10px;
