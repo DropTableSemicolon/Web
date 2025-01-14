@@ -192,13 +192,7 @@ async function createPost() {
     }
 }
 
-const startDate = new Date('2001-09-11T14:14:00+02:00');
 
-function updateTimer() {
-    const currentDate = new Date();
-    const diffInSeconds = Math.floor((currentDate - startDate) / 1000);
-    document.getElementById('timer').innerText = `${diffInSeconds} seconds since 9/11`;
-}
 
 window.onload = function() {
     //devMode = true;

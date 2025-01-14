@@ -36,6 +36,10 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
+.container1{
+  display: flex;
+  flex-direction: column;
+}
 .item {
   height: 40px;
   margin-bottom: 10px;
@@ -370,4 +374,56 @@ li:last-child {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.img{
+  width: 50px;
+  height: 50px;
+}
+
+.sablon{
+  float: right;
+  position: fixed;
+}
+
+.content{
+  flex: 1;
+}
+
+.footer {
+  background-color: #4267B2;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.user-list-container {
+  position: fixed; 
+  top: 50px;       
+  right: 10px;
+  width: 250px;   
+  background-color: #f8f9fa; 
+  border: 1px solid #ddd; 
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.user-list-container .post-card {
+  display: flex; 
+  align-items: center;
+  margin-bottom: 10px; 
+}
+
+.user-list-container .post-card img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  margin-right: 10px;
+}
+
+.user-list-container .post-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #333; 
 }
