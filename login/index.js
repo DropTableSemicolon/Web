@@ -20,7 +20,7 @@ function checkSessionCookie() {
           responseMessage.style.display = 'none';
 
           try {
-              const response = await fetch('https://helia.gg/social/api/v1/auth/login', {
+              const response = await fetch('https://social.helia.gg/api/v1/auth/login', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
