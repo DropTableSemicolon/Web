@@ -25,7 +25,7 @@ function checkSessionCookie() {
           responseMessage.style.display = 'none'; // Hide message box initially
 
           try {
-              const response = await fetch('https://social.helia.gg/api/v1/auth/register', {
+              const response = await fetch('https://helia.gg/api/v1/auth/register', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
