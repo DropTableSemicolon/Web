@@ -175,21 +175,3 @@ form button{
   align-items: center;
   justify-content: center;
   }
-
-.sablon{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-main {
-  display: flex;
-  margin: 20px;
-}
-
-.img{
-  width: 50px;
-}
