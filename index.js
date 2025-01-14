@@ -2,7 +2,7 @@ var devMode = false;
 
 function logout() {
     document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    window.location.href = 'https://social.helia.gg/login/';
+    window.location.href = 'https://helia.gg/social/login/';
 }
 
 const API_URL = 'https://social.helia.gg/api/v1/feed/posts';
@@ -21,13 +21,13 @@ function checkSessionCookie() {
 
   const sessionCookie = cookies.find(cookie => cookie.trim().startsWith('session='));
   if (!sessionCookie) {
-    window.location.href = 'https://social.helia.gg/login/';
+    window.location.href = 'https://helia.gg/social/login/';
   }
 
   let sessionCookieValue = sessionCookie.split('=')[1];
   sessionCookieValue = sessionCookieValue.split('; expires')[0];
   if (!sessionCookieValue) {
-    window.location.href = 'https://social.helia.gg/login/';
+    window.location.href = 'https://helia.gg/social/login/';
   }
 }
 
@@ -60,7 +60,7 @@ async function loadPosts() {
 
         if (error.status === 401 && !devMode) {
             document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-            window.location.href = 'https://social.helia.gg/login/';
+            window.location.href = 'https://helia.gg/social/login/';
         }
 
         console.error('Error loading posts:', error);

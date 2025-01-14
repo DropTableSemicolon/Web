@@ -5,7 +5,7 @@ function checkSessionCookie() {
 
     const sessionCookieValue = sessionCookie.split('=')[1];
     if (sessionCookieValue) {
-      window.location.href = 'https://social.helia.gg/';
+      window.location.href = 'https://helia.gg/social/';
     }
   }
 
@@ -20,7 +20,7 @@ function checkSessionCookie() {
           responseMessage.style.display = 'none';
 
           try {
-              const response = await fetch('https://social.helia.gg/api/v1/auth/login', {
+              const response = await fetch('https://helia.gg/social/api/v1/auth/login', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ function checkSessionCookie() {
                   responseMessage.style.display = 'block';
 
                   setTimeout(() => {
-                      window.location.href = 'https://social.helia.gg/';
+                      window.location.href = 'https://helia.gg/social/';
                   }, 1000);
               } else {
                   responseMessage.textContent = 'Error: ' + result.error;
