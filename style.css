@@ -369,8 +369,9 @@ li:last-child {
 .kereso {
   float: right;
   position: fixed; 
-  top: 10px;          
-  right: 10px;        
+  top: 100px;
+  width: 400px;
+  right: 11px;      
   display: flex;
   align-items: center;
   justify-content: center;
@@ -399,14 +400,15 @@ li:last-child {
 
 .user-list-container {
   position: fixed; 
-  top: 50px;       
+  bottom: 10px;
   right: 10px;
-  width: 250px;   
+  width: 350px;
   background-color: #f8f9fa; 
   border: 1px solid #ddd; 
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px;
+  z-index: 100;
 }
 
 .user-list-container .post-card {
